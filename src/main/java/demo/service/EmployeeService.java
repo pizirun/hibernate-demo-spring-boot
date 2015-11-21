@@ -7,18 +7,20 @@
 package demo.service;
 
 import demo.model.Employee;
-import demo.model.EmployeeDao;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import demo.dao.EmployeeDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author <a href="mailto:pizhigang@letv.com">pizhigang</a>
  */
 @Component
+@Transactional
 public class EmployeeService {
 
     private static final Logger logger = LogManager.getLogger(EmployeeService.class);
@@ -55,6 +57,7 @@ public class EmployeeService {
 
         Iterable<Employee> employees = employeeDao.findAll();
         for (Employee e : employees) {
+            System.out.print("Id: " + e.getId());
             System.out.print("First Name: " + e.getFirstName());
             System.out.print("  Last Name: " + e.getLastName());
             System.out.println("  Salary: " + e.getSalary());

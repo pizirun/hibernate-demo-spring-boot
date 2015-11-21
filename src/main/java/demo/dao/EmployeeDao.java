@@ -5,9 +5,9 @@
  * 
  */
 
-package demo.model;
+package demo.dao;
 
-import javax.transaction.Transactional;
+import demo.model.Employee;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author <a href="mailto:pizhigang@letv.com">pizhigang</a>
  */
-@Transactional
+@Repository
 public interface EmployeeDao extends CrudRepository<Employee, Long> {
 
 }
